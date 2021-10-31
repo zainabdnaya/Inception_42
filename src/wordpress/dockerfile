@@ -1,0 +1,32 @@
+FROM debian:buster
+
+RUN apt-get update -y
+
+RUN apt-get upgrade -y 
+
+RUN apt-get install curl -y
+
+RUN apt-get -y install php-mbstring
+RUN apt-get -y install php-zip
+RUN apt-get -y install php-gd
+RUN apt-get -y install php-xml
+RUN apt-get -y install php-pear
+RUN apt-get -y install php-gettext
+RUN apt-get -y install php-cli
+RUN apt-get -y install php-fpm
+RUN apt-get -y install php-cgi
+RUN apt-get -y install php-mysql
+RUN apt-get install wget -y
+RUN adduser www
+RUN usermod -a -G 'www' www
+RUN mkdir /www
+RUN chown -R www:www /www
+RUN  cd /www &&\
+    wget http://wordpress.org/latest.tar.gz &&\
+    tar -xzvf latest.tar.gz &&\
+    rm latest.tar.gz wordpress/wp-config-sample.php.
+COPY ./wp-config.php /www/wordpress/
+
+EXPOSE 9000
+
+CMD rc-service php-fpm7 start &>/dev/null
