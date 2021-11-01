@@ -4,29 +4,25 @@ RUN apt-get update -y
 
 RUN apt-get upgrade -y 
 
-RUN apt-get install curl -y
-
-RUN apt-get -y install php-mbstring
-RUN apt-get -y install php-zip
-RUN apt-get -y install php-gd
-RUN apt-get -y install php-xml
-RUN apt-get -y install php-pear
-RUN apt-get -y install php-gettext
-RUN apt-get -y install php-cli
-RUN apt-get -y install php-fpm
-RUN apt-get -y install php-cgi
-RUN apt-get -y install php-mysql
-RUN apt-get install wget -y
-RUN adduser www
-RUN usermod -a -G 'www' www
-RUN mkdir /www
-RUN chown -R www:www /www
-RUN  cd /www &&\
-    wget http://wordpress.org/latest.tar.gz &&\
-    tar -xzvf latest.tar.gz &&\
-    rm latest.tar.gz wordpress/wp-config-sample.php.
-COPY ./wp-config.php /www/wordpress/
-
 EXPOSE 9000
 
-CMD rc-service php-fpm7 start &>/dev/null
+RUN apt install -y vim
+RUN apt install -y unzip
+RUN apt install -y wget
+RUN apt install -y php-fpm php-mysql
+RUN apt upgrade -y
+RUN mkdir -p /var/www/html
+RUN  cd /var/www/html &&\
+    wget http://wordpress.org/latest.tar.gz &&\
+    tar -xzvf latest.tar.gz &&\
+    rm latest.tar.gz 
+COPY ./wp-config.php /
+RUN cp -rf ./wp-config.php /var/www/html
+RUN service php7.3-fpm start
+RUN service php7.3-fpm stop
+RUN chmod 777 /var/www/html/
+COPY ./www.conf /etc/php/7.3/fpm/pool.d/
+COPY ./php-fpm.conf /etc/php/7.3/fpm/
+COPY ./start.sh ./start.sh
+ENTRYPOINT ["bash","start.sh"]
+

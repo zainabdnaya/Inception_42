@@ -1,8 +1,6 @@
 service mysql start
+mysql -u root -e "CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';"
+mysql -u root -e "CREATE DATABASE wordp;"
+mysql -u root -e "USE $WP_DB_NAME; GRANT ALL PRIVILEGES ON * TO '$MYSQL_USER'@'%' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 
-
-echo "CREATE DATABASE wordpress;" | mysql -u root
-echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost';" | mysql -u root
-echo "FLUSH PRIVILEGES;" | mysql -u root
-echo "update mysql.user set plugin = 'mysql_native_password' where user='root';" | mysql -u root
-
+cp -r /var/lib/mysql /
