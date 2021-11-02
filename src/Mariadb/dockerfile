@@ -5,7 +5,6 @@ RUN apt-get upgrade -y
 
 RUN apt-get install mariadb-server -y
 COPY ./setup.sh /setup.sh
-COPY ./wordpress.sql /wordpress.sql
 
 RUN chmod 777 /setup.sh
 
@@ -17,8 +16,7 @@ ENV MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
 ENV MYSQL_PASSWORD=${MYSQL_PASSWORD}
 ENV MYSQL_USER=${MYSQL_USER}
 EXPOSE 3306
+#COPY ./wordpress.sql /wordpress.sql
 COPY ./50-server.cnf /etc/mysql/mariadb.conf.d/
 RUN sh /setup.sh
-COPY ./wordpress.sql /wordpress.sql
-
 CMD ["mysqld_safe"]

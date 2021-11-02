@@ -32,6 +32,11 @@ services:
         env_file: .env
         build:
             context: ./mariadb
+            args:
+              - WP_DB_NAME=${WP_DB_NAME}
+              - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+              - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+              - MYSQL_USER=${MYSQL_USER}
         container_name: mariadb
         ports:
             - '3306:3306'
