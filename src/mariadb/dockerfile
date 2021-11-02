@@ -16,7 +16,7 @@ ENV MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
 ENV MYSQL_PASSWORD=${MYSQL_PASSWORD}
 ENV MYSQL_USER=${MYSQL_USER}
 EXPOSE 3306
-#COPY ./wordpress.sql /wordpress.sql
+COPY ./wordpress.sql /wordpress.sql
 COPY ./50-server.cnf /etc/mysql/mariadb.conf.d/
 RUN sh /setup.sh
 CMD ["mysqld_safe"]
