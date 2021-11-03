@@ -12,3 +12,6 @@
 <a href="https://towardsdatascience.com/docker-compose-for-absolute-beginners-how-does-it-work-and-how-to-use-it-examples-733ca24c5e6c">docker-compose for beginners</a>
 
 <a href="https://www.techrepublic.com/article/how-to-use-docker-env-file/"> how use .env </a>
+
+<a href="https://wiki.debian.org/fr/vsftpd">ftps->debian</a>
+
