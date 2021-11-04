@@ -61,7 +61,7 @@ services:
             - '21:21'
             - '20:20'
         volumes:
-            - wordpress_vol:/var/
+            - wordpress_vol:/home/
         networks:
             - inception_net
         restart: always

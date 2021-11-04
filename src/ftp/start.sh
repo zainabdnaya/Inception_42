@@ -1,6 +1,8 @@
 #!/bin/sh
 #chown for ftp work dir
-#chown -R zdnaya:zdnaya /home/kali
+
+mkdir -p /home/zdnaya
+chown -R zdnaya:zdnaya /home/
 
 
 #start ftp-server
