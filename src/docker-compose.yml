@@ -59,7 +59,7 @@ services:
         container_name: ftp
         ports:
             - '21:21'
-            - '22:22'
+            - '20:20'
         volumes:
             - wordpress_vol:/var/
         networks:
