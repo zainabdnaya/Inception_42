@@ -61,7 +61,7 @@ services:
             - '21:21'
             - '20:20'
         volumes:
-            - wordpress_vol:/home/
+            - wordpress_vol:/home/zdnaya/
         networks:
             - inception_net
         restart: always
