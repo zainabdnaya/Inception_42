@@ -76,7 +76,19 @@ services:
         ports:
             - '5005:5005'
         volumes:
-            - wordpress_vol:/home/zdnaya
+            - wordpress_vol:/var/www/html
+        networks:
+            - inception_net
+        restart: always
+    redis:
+        image: redis
+        build:
+            context: ./redis
+        depends_on:
+            - wordpress
+        container_name: redis
+        ports:
+            - '6379:6379'
         networks:
             - inception_net
         restart: always
