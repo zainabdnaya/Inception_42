@@ -65,17 +65,32 @@ services:
         networks:
             - inception_net
         restart: always
+    adminer:
+        image: adminer
+        env_file: .env
+        build:
+            context: ./adminer
+        depends_on:
+            - wordpress
+        container_name: adminer
+        ports:
+            - '5005:5005'
+        volumes:
+            - wordpress_vol:/home/zdnaya
+        networks:
+            - inception_net
+        restart: always
 volumes:
     wordpress_vol:
         driver: local
         driver_opts:
             type: 'none'
             o: 'bind'
-            device: '/home/kali/data/wordpress'
+            device: '/home/zdnaya/data/wordpress'
     mariadb_vol:
         driver: local
         driver_opts:
             type: 'none'
             o: 'bind'
-            device: '/home/kali/data/mariadb'
+            device: '/home/zdnaya/data/mariadb'
 

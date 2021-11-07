@@ -1,4 +1,4 @@
-sudo rm -rf /home/milmi/data
+sudo rm -rf /home/zdnaya/data
 sudo docker stop $(docker ps -qa);
 sudo docker rm -f $(docker ps -qa);
 sudo docker rmi -f $(docker images -qa);
