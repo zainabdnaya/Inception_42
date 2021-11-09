@@ -103,6 +103,16 @@ services:
         networks:
             - inception_net
         restart: always
+    website:
+        image: website
+        build:
+            context: ./website
+        networks:
+            - inception_net
+        volumes: 
+            - wordpress_vol:/var/www/html
+        restart: always
+
 volumes:
     wordpress_vol:
         driver: local
