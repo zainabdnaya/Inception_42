@@ -1,5 +1,5 @@
-include ./src/.env
-SRC = cd src && docker-compose -f docker-compose.yml 
+include ./srcs/.env
+SRC = cd srcs && docker-compose -f docker-compose.yml 
 all :
 	sudo mkdir -p $(DB_VOL)
 	sudo mkdir -p $(WP_VOL)
@@ -15,3 +15,11 @@ down:
 	${SRC} down
 ps:
 	${SRC} ps
+
+fclean: 
+	sudo rm -rf /home/zdnaya/data
+	sudo docker stop $(docker ps -qa)
+	sudo docker rm -f $(docker ps -qa)
+	sudo docker rmi -f $(docker images -qa)
+	sudo docker volume rm $(docker volume ls -q)
+	sudo docker network rm $(docker network ls -q) 2>/dev/null

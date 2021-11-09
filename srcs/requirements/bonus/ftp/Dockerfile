@@ -7,7 +7,7 @@ RUN apt-get install  openssl -y
 RUN apt-get install  jq -y
 RUN apt-get install  curl -y
 RUN apt-get install openssh-server -y 
-RUN echo -e "MA\nKH\nKHOURIBGA\n1337Ltd\nOCP\nOCP SA\nft_services@1337.ma\n" | openssl req \
+RUN echo -e "MA\nKH\nKHOURIBGA\n1337Ltd\nOCP\nOCP SA\nft_inception@1337.ma\n" | openssl req \
 			-x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out \
 			/etc/ssl/private/vsftpd.pem
 RUN cd var/run/

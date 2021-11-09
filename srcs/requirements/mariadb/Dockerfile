@@ -2,12 +2,9 @@ FROM debian:buster
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
-
 RUN apt-get install mariadb-server -y
 COPY ./setup.sh /setup.sh
-
 RUN chmod 777 /setup.sh
-
 ARG MYSQL_ROOT_PASSWORD
 ARG MYSQL_PASSWORD
 ARG MYSQL_USER

@@ -26,9 +26,3 @@ apt-get update -y
 
 apt-get install grafana -y
 
-#cp /sample.yaml /ect/grafana/provisioning/datasources/
-
-#/etc/init.d/grafana-server start
-#/etc/init.d/telegraf start
-
-#telegraf
