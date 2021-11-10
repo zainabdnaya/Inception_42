@@ -1,4 +1,5 @@
 FROM debian:buster
+
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install nginx -y
@@ -18,6 +19,6 @@ RUN apt-get update -y
 RUN apt-get install influxdb telegraf -y
 
 EXPOSE 443
-COPY ./default /etc/nginx/sites-available/
+COPY ./tools/default /etc/nginx/sites-available/
 CMD ["nginx", "-g", "daemon off;"]
  

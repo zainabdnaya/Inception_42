@@ -10,7 +10,7 @@ services:
             - inception_net
         env_file: .env
         build:
-            context: ./wordpress
+            context: ./requirements/wordpress
         ports:
             - '9000:9000'
         volumes:
@@ -22,7 +22,7 @@ services:
         networks:
             - inception_net
         build:
-            context: ./nginx
+            context: ./requirements/nginx
         env_file:
             - .env
         ports: 
@@ -35,7 +35,7 @@ services:
         image: mariadb
         env_file: .env
         build:
-            context: ./mariadb
+            context: ./requirements/mariadb
             args:
               - WP_DB_NAME=${WP_DB_NAME}
               - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -53,7 +53,7 @@ services:
         image: ftp
         env_file: .env
         build:
-            context: ./ftp
+            context: ./requirements/bonus/ftp
         depends_on:
            - wordpress
         container_name: ftp
@@ -69,7 +69,7 @@ services:
         image: adminer
         env_file: .env
         build:
-            context: ./adminer
+            context: ./requirements/bonus/adminer
         depends_on:
             - wordpress
         container_name: adminer
@@ -83,7 +83,7 @@ services:
     redis:
         image: redis
         build:
-            context: ./redis
+            context: ./requirements/bonus/redis
         depends_on:
             - wordpress
         container_name: redis
@@ -98,15 +98,16 @@ services:
             - '3000:3000'
             - '8086:8086'
         build:
-            context: ./grafana
+            context: ./requirements/bonus/grafana
         container_name: grafana
         networks:
             - inception_net
         restart: always
     website:
         image: website
+        comtainer_name: website
         build:
-            context: ./website
+            context: ./requirements/bonus/website
         networks:
             - inception_net
         volumes: 

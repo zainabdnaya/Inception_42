@@ -18,5 +18,5 @@ WORKDIR /usr/local/tcl8.6.1/unix/
 RUN ./configure   && make && make install
 
 RUN cd /redis-stable && make
-COPY ./redis.conf /redis.conf
+COPY ./tools/redis.conf /redis.conf
 CMD redis-server --protected-mode no

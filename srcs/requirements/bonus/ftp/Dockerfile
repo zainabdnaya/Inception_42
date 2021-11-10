@@ -15,7 +15,7 @@ RUN mkdir -p  var/run/vsftpd/empty
 RUN adduser 'zdnaya'
 RUN echo "zdnaya:root" | chpasswd
 RUN ssh-keygen -A
-COPY vsftpd.conf etc/
+COPY ./tools/vsftpd.conf etc/
 EXPOSE 21
-COPY start.sh /
+COPY ./tools/start.sh /
 ENTRYPOINT ["sh", "start.sh"]
