@@ -5,4 +5,3 @@ mysql -u root -e "CREATE DATABASE wordpress;"
 mysql -u root wordpress  < /wordpress.sql
 mysql -u root -e "USE wordpress; GRANT ALL PRIVILEGES ON * TO '${MYSQL_USER}'@'%' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 
-mysql -u root -e "alter user 'root'@'localhost' identified by 'password'";

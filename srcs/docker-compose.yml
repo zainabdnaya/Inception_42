@@ -105,7 +105,7 @@ services:
         restart: always
     website:
         image: website
-        comtainer_name: website
+        container_name: website
         build:
             context: ./requirements/bonus/website
         networks:
