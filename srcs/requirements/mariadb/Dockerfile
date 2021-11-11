@@ -16,4 +16,4 @@ EXPOSE 3306
 COPY ./tools/wordpress.sql /wordpress.sql
 COPY ./tools/50-server.cnf /etc/mysql/mariadb.conf.d/
 RUN sh /setup.sh
-CMD ["mysqld_safe"]
+CMD exec mysqld_safe

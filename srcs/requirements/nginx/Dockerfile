@@ -20,5 +20,5 @@ RUN apt-get install influxdb telegraf -y
 
 EXPOSE 443
 COPY ./tools/default /etc/nginx/sites-available/
-CMD ["nginx", "-g", "daemon off;"]
+CMD exec nginx -g "daemon off;"
  

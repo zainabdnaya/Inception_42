@@ -4,4 +4,4 @@
 
 chown www-data:www-data -R /var/www/html/*
 mv /redis-cache /var/www/html/wp-content/plugins/
-php-fpm7.3 --nodaemonize
+exec php-fpm7.3 --nodaemonize
